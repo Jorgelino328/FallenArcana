@@ -1,0 +1,162 @@
+[gd_scene load_steps=15 format=3 uid="uid://8wanx8w76435"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/Player/Player.gd" id="1_qogup"]
+[ext_resource type="Texture2D" uid="uid://bemfwx5vv4t8t" path="res://Assets/Sprites/Silas.png" id="2_15o04"]
+[ext_resource type="Texture2D" uid="uid://b3u61dek40brq" path="res://Assets/Sprites/Walking.png" id="2_mo04i"]
+[ext_resource type="Texture2D" uid="uid://b4bxqur1rivcu" path="res://Assets/Sprites/Hand.png" id="3_fv5xl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ede06"]
+size = Vector2(56.3911, 18)
+
+[sub_resource type="Animation" id="Animation_vcg3o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nymfp"]
+resource_name = "walking"
+length = 1.2
+loop_mode = 1
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2xm6y"]
+_data = {
+"RESET": SubResource("Animation_vcg3o"),
+"walking": SubResource("Animation_nymfp")
+}
+
+[sub_resource type="Animation" id="Animation_5olo2"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_2s4j1"]
+resource_name = "dash"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.779999, 0.9), Vector2(0.54, 0.9), Vector2(0.54, 0.9), Vector2(0.62, 0.9), Vector2(0.779999, 0.9), Vector2(0.9, 0.989), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m873g"]
+_data = {
+"RESET": SubResource("Animation_5olo2"),
+"dash": SubResource("Animation_2s4j1")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lutyn"]
+size = Vector2(7.68, 7.68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fav1"]
+size = Vector2(7.68, 7.68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmqxk"]
+size = Vector2(64, 26)
+
+[node name="Silas_Blackwood" type="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(0, 93)
+collision_layer = 16
+collision_mask = 84
+script = ExtResource("1_qogup")
+hp = 50
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(1.00698, 2)
+shape = SubResource("RectangleShape2D_ede06")
+metadata/_edit_lock_ = true
+
+[node name="LegSprite" type="Sprite2D" parent="."]
+modulate = Color(0.393897, 0.21565, 0.216114, 1)
+position = Vector2(0, 9)
+texture = ExtResource("2_mo04i")
+hframes = 4
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -7.15256e-07)
+scale = Vector2(2.08424, 1.77819)
+texture = ExtResource("2_15o04")
+metadata/_edit_lock_ = true
+
+[node name="MovementAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2xm6y")
+}
+
+[node name="ActionAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m873g")
+}
+
+[node name="PlayerHandLeft" type="Area2D" parent="."]
+position = Vector2(32, 27)
+scale = Vector2(1.5625, 1.5625)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="HandLeftCollision" type="CollisionShape2D" parent="PlayerHandLeft"]
+position = Vector2(0, 1.90735e-06)
+shape = SubResource("RectangleShape2D_lutyn")
+
+[node name="HandSprite" type="Sprite2D" parent="PlayerHandLeft"]
+visible = false
+texture = ExtResource("3_fv5xl")
+
+[node name="PlayerHandRight" type="Area2D" parent="."]
+position = Vector2(-31, 27)
+scale = Vector2(1.5625, 1.5625)
+metadata/_edit_lock_ = true
+
+[node name="HandRightCollision" type="CollisionShape2D" parent="PlayerHandRight"]
+shape = SubResource("RectangleShape2D_8fav1")
+
+[node name="HandSprite" type="Sprite2D" parent="PlayerHandRight"]
+visible = false
+scale = Vector2(0.98, 0.98)
+texture = ExtResource("3_fv5xl")
+
+[node name="BulletDetector" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 116
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetector"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_gmqxk")
+
+[node name="DashCooldown" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="BulletDetector" to="." method="_on_bullet_detector_body_entered"]
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://h3rmm03rv67f"]
+
+[ext_resource type="Script" path="res://Scenes/Weapons/Projectiles/Bullet.gd" id="1_3v5hg"]
+[ext_resource type="Texture2D" uid="uid://dctjhq88e1umn" path="res://Assets/Sprites/bullet2.png" id="2_afra3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2wsx"]
+size = Vector2(3, 6)
+
+[node name="Bullet" type="RigidBody2D"]
+rotation = -1.5708
+scale = Vector2(0.5, 1)
+collision_layer = 32
+collision_mask = 20
+gravity_scale = 0.0
+continuous_cd = 2
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_3v5hg")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+scale = Vector2(0.600004, 0.319999)
+texture = ExtResource("2_afra3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_w2wsx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

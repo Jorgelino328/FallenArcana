@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bdytyd82v3l1q"]
+
+[ext_resource type="FontFile" uid="uid://b8a71jaiiqmo1" path="res://Assets/Fonts/Typodermic Fonts/vanilla whale.otf" id="1_3euk7"]
+
+[resource]
+font = ExtResource("1_3euk7")
+font_size = 40
+shadow_size = 3
+shadow_color = Color(0.282353, 0, 0, 1)
+shadow_offset = Vector2(-2, 2)

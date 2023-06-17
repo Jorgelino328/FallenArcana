@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfvudvk524psi"]
+
+[ext_resource type="Script" path="res://Scenes/SceneController.gd" id="1_ste0x"]
+[ext_resource type="PackedScene" uid="uid://dm0epwcnjr1c3" path="res://Scenes/UIs/Menus/Main_Menu/main_menu.tscn" id="2_m0op5"]
+[ext_resource type="AudioStream" uid="uid://bvh247cpt5g0f" path="res://Assets/music1.wav" id="3_xijih"]
+
+[node name="SceneController" type="Node"]
+process_mode = 1
+script = ExtResource("1_ste0x")
+
+[node name="Main_Menu" parent="." instance=ExtResource("2_m0op5")]
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_xijih")

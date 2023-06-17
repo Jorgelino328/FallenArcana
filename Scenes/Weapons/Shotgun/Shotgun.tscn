@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=3 uid="uid://d4cmxbaxue2vg"]
+
+[ext_resource type="Texture2D" uid="uid://dyvocip114ktb" path="res://Assets/Sprites/doubleBarrel.png" id="1_dlnbc"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Shotgun/Shotgun.gd" id="1_dqax3"]
+[ext_resource type="Texture2D" uid="uid://tl6ufo75r4ti" path="res://Assets/Sprites/fire.png" id="3_arvyg"]
+[ext_resource type="AudioStream" uid="uid://bb654qx1u77xw" path="res://Assets/Audio/mike_koenig-shotgun/10 Guage Shotgun-SoundBible.com-74120584.wav" id="4_kxbhf"]
+[ext_resource type="AudioStream" uid="uid://7a706ycrqwji" path="res://Assets/Audio/mike_koenig-shotgun/Chambering A Round-SoundBible.com-854171848.wav" id="5_pml6s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs1xw"]
+size = Vector2(12.5, 48.5)
+
+[sub_resource type="Animation" id="Animation_j1aiq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShootingSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c1bq4"]
+resource_name = "shoot"
+length = 0.14
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShootingSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(2, 0), Vector2i(1, 0), Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShootingSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4uelt"]
+_data = {
+"RESET": SubResource("Animation_j1aiq"),
+"shoot": SubResource("Animation_c1bq4")
+}
+
+[node name="Shotgun" type="Area2D"]
+texture_filter = 1
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_dqax3")
+pelletCount = 50
+spread = 0.3
+
+[node name="ShotgunCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hs1xw")
+
+[node name="ShotgunSprite" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_dlnbc")
+
+[node name="GunEnd" type="Marker2D" parent="."]
+position = Vector2(0, 25)
+
+[node name="ShootingSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0.0387218, 35.8918)
+rotation = 3.13368
+scale = Vector2(2.24266, 2.48059)
+texture = ExtResource("3_arvyg")
+hframes = 4
+
+[node name="ShootingAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4uelt")
+}
+
+[node name="GunCooldown" type="Timer" parent="."]
+autostart = true
+
+[node name="ShotgunShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kxbhf")
+bus = &"Sound FX"
+
+[node name="Reload" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_pml6s")
+bus = &"Sound FX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]

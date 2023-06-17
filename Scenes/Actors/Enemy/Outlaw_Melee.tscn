@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7pancmoyxcy0"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/Enemy/Outlaw_Melee.gd" id="1_n0n0h"]
+[ext_resource type="Texture2D" uid="uid://b3u61dek40brq" path="res://Assets/Sprites/Walking.png" id="2_0orut"]
+[ext_resource type="Texture2D" uid="uid://d0pfibliove7i" path="res://Assets/Sprites/Enemy3.png" id="3_t3bd4"]
+[ext_resource type="PackedScene" uid="uid://bu7vsgs5g88l3" path="res://Scenes/Weapons/Machette/Machette.tscn" id="4_v3lql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b002v"]
+size = Vector2(32.6667, 26)
+
+[sub_resource type="Animation" id="Animation_rnyyj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LegSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_a4q1i"]
+resource_name = "walking"
+length = 1.2
+loop_mode = 1
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LegSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_23x88"]
+_data = {
+"RESET": SubResource("Animation_rnyyj"),
+"walking": SubResource("Animation_a4q1i")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfhee"]
+size = Vector2(32, 27)
+
+[node name="Outlaw_Melee" type="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(-2, -2)
+scale = Vector2(1.5, 1.5)
+collision_layer = 16
+collision_mask = 116
+script = ExtResource("1_n0n0h")
+hp = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.333334, -1)
+shape = SubResource("RectangleShape2D_b002v")
+metadata/_edit_lock_ = true
+
+[node name="LegSprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.392157, 0.215686, 0.215686, 1)
+position = Vector2(0.667, 3.667)
+scale = Vector2(0.729167, 0.729167)
+texture = ExtResource("2_0orut")
+hframes = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.0155478
+texture = ExtResource("3_t3bd4")
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_23x88")
+}
+
+[node name="BulletDetector" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 116
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetector"]
+position = Vector2(-0.0414259, -0.999141)
+shape = SubResource("RectangleShape2D_yfhee")
+
+[node name="Machette" parent="." instance=ExtResource("4_v3lql")]
+position = Vector2(-12.6667, 18)
+rotation = -2.89899
+scale = Vector2(0.5, 0.5)
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="shooting" from="." to="Machette" method="_on_shooting"]
+[connection signal="body_entered" from="BulletDetector" to="." method="_on_bullet_detector_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

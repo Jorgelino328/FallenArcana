@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwjmw77exoast"]
+
+[ext_resource type="Script" path="res://Scenes/Items/HealthKit.gd" id="1_gd5bx"]
+[ext_resource type="Texture2D" uid="uid://cykvxryr2yf5i" path="res://Assets/Sprites/health_box.png" id="1_pu4pj"]
+[ext_resource type="AudioStream" uid="uid://d2qkv40yxrsxm" path="res://Assets/Audio/Menu FX example/Item1A.wav" id="3_wwrv1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jkwm"]
+size = Vector2(25, 25)
+
+[node name="HealthKit" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_gd5bx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pu4pj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_2jkwm")
+
+[node name="PickedUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wwrv1")
+bus = &"Sound FX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
