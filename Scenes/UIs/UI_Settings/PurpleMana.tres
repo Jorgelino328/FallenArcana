@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c3u7pkv4gva6m"]
+
+[ext_resource type="StyleBox" uid="uid://7aug7iamy163" path="res://Scenes/UIs/UI_Settings/disablesPurp.tres" id="1_62daq"]
+[ext_resource type="StyleBox" uid="uid://dy04pnb6g5byk" path="res://Scenes/UIs/UI_Settings/BackdropPurp2.tres" id="2_01e8e"]
+[ext_resource type="StyleBox" uid="uid://b55b8715d53rp" path="res://Scenes/UIs/UI_Settings/BackdropPurp.tres" id="3_cqq2e"]
+[ext_resource type="FontFile" uid="uid://1smp3j53cv0l" path="res://Assets/Fonts/Typodermic Fonts/vinque rg.otf" id="4_pafa4"]
+
+[resource]
+default_font = ExtResource("4_pafa4")
+default_font_size = 30
+Button/styles/disabled = ExtResource("1_62daq")
+Button/styles/focus = ExtResource("2_01e8e")
+Button/styles/hover = ExtResource("2_01e8e")
+Button/styles/normal = ExtResource("3_cqq2e")
+Button/styles/pressed = ExtResource("3_cqq2e")
