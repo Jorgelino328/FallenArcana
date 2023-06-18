@@ -11,6 +11,6 @@ func _process(delta):
 	$HealthBar.max_value = 50
 	$HealthBar.value = player.hp
 	
-	$DashLabel/DashAmount.text = "%.1f" %player.get_node("DashCooldown").time_left
+	$DashLabel/DashAmount.text = " %.1f" %player.get_node("DashCooldown").time_left
 	
 	

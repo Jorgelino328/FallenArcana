@@ -37,36 +37,48 @@ func _physics_process(delta):
 	print(direction)
 	if(direction.x > 0.5):
 		animation.play("walking_right")
-		last_dir = direction
-		$Club.position = Vector2(7,13)
-		$Club.rotation = deg_to_rad(90)
+		last_dir = Vector2(1,0)
+		$Club.position = Vector2(-7,18)
+		$Club.rotation = deg_to_rad(270)
 		$Club.show_behind_parent = false
 	elif(direction.x < -0.5):
 		animation.play("walking_left")
-		last_dir = direction
-		$Club.position = Vector2(-8,14)
-		$Club.rotation = deg_to_rad(270)
+		last_dir = Vector2(-1,0)		
+		$Club.position = Vector2(5,19)
+		$Club.rotation = deg_to_rad(90)
 		$Club.show_behind_parent = false
 	elif(direction.y > 0.5):
 		animation.play("walking_down")
-		last_dir = direction
-		$Club.position = Vector2(-18,24)
+		last_dir = Vector2(0,1)
+		$Club.position = Vector2(-17,23)
 		$Club.rotation = deg_to_rad(180)
 		$Club.show_behind_parent = false
 	elif(direction.y < -0.5):
 		animation.play("walking_up")
-		last_dir = direction
-		$Club.position = Vector2(20,-3)
+		last_dir = Vector2(0,-1)
+		$Club.position = Vector2(13,-4)
 		$Club.rotation = 0
 		$Club.show_behind_parent = true
 	elif(last_dir.x == 1):
 		animation.play("idle_right")
+		$Club.position = Vector2(-7,18)
+		$Club.rotation = deg_to_rad(270)
+		$Club.show_behind_parent = false
 	elif(last_dir.x == -1):
 		animation.play("idle_left")
+		$Club.position = Vector2(5,19)
+		$Club.rotation = deg_to_rad(90)
+		$Club.show_behind_parent = false
 	elif(last_dir.y == -1):
 		animation.play("idle_up")
+		$Club.position = Vector2(13,-4)
+		$Club.rotation = 0
+		$Club.show_behind_parent = true
 	else:
 		animation.play("idle_down")
+		$Club.position = Vector2(-17,23)
+		$Club.rotation = deg_to_rad(180)
+		$Club.show_behind_parent = false
 	move_and_slide()
 
 func _on_timer_timeout():

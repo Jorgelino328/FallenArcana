@@ -249,8 +249,8 @@ libraries = {
 }
 
 [node name="Club" parent="." instance=ExtResource("3_b7mxk")]
-position = Vector2(-8, 14)
-rotation = 4.71239
+position = Vector2(5, 19)
+rotation = 1.5708
 
 [node name="BulletDetector" type="Area2D" parent="."]
 collision_layer = 16
