@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Levels/Level.gd" id="1_habfm"]
 [ext_resource type="Texture2D" uid="uid://b10w7vp4r320k" path="res://Assets/Tilesets/desert_ [version 1.0]/desertPath_.png" id="2_8eohl"]
-[ext_resource type="PackedScene" uid="uid://djtbkers58ann" path="res://Scenes/Actors/Enemy/Troll.tscn" id="4_6rexj"]
+[ext_resource type="PackedScene" uid="uid://dxw8jtmy4qq5n" path="res://Scenes/Actors/Enemy/Troll.tscn" id="4_6rexj"]
 [ext_resource type="PackedScene" uid="uid://8wanx8w76435" path="res://Scenes/Actors/Player/Player.tscn" id="8_yeg4v"]
 [ext_resource type="PackedScene" uid="uid://dm5yftn60gmxe" path="res://Scenes/UIs/Player_HUD/PlayerHUD.tscn" id="9_3qavo"]
 [ext_resource type="PackedScene" uid="uid://s1ugftu76qga" path="res://Scenes/UIs/Dialogue_UI/Dialogue_UI.tscn" id="10_v6nvd"]

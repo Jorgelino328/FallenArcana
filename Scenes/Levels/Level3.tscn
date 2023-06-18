@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdknxvrm36l4n"]
+[gd_scene load_steps=12 format=3]
 
-[ext_resource type="PackedScene" uid="uid://b6x6cuen1hrya" path="res://Scenes/Levels/level_template.tscn" id="1_ds7u1"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/level_template.tscn" id="1_ds7u1"]
 [ext_resource type="TileSet" uid="uid://cg2bcnd4mhwlk" path="res://Assets/Tilesets/BasicSet.tres" id="2_fmvdg"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level3.gd" id="2_tj4c2"]
 [ext_resource type="PackedScene" uid="uid://bg2kxmxyvb017" path="res://Scenes/Weapons/SixShooter/SixShooter.tscn" id="3_eysga"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://vrmpig6im5c" path="res://Scenes/Actors/Enemy/Outlaw_Intermed.tscn" id="8_f1eyl"]
 [ext_resource type="PackedScene" uid="uid://cwjmw77exoast" path="res://Scenes/Items/HealthKit.tscn" id="9_sw62a"]
 [ext_resource type="PackedScene" uid="uid://d4cmxbaxue2vg" path="res://Scenes/Weapons/Shotgun/Shotgun.tscn" id="10_rnm13"]
-[ext_resource type="PackedScene" uid="uid://bu7vsgs5g88l3" path="res://Scenes/Weapons/Machette/Machette.tscn" id="11_0bnre"]
+[ext_resource type="PackedScene" uid="uid://bu7vsgs5g88l3" path="res://Scenes/Weapons/Machette/Club.tscn" id="11_0bnre"]
 
 [node name="Level3" instance=ExtResource("1_ds7u1")]
 script = ExtResource("2_tj4c2")

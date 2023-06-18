@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7pancmoyxcy0"]
+[gd_scene load_steps=10 format=3 uid="uid://cplvvs65klwmc"]
 
 [ext_resource type="Script" path="res://Scenes/Actors/Enemy/Outlaw_Melee.gd" id="1_n0n0h"]
 [ext_resource type="Texture2D" uid="uid://b3u61dek40brq" path="res://Assets/Sprites/Walking.png" id="2_0orut"]
-[ext_resource type="Texture2D" uid="uid://d0pfibliove7i" path="res://Assets/Sprites/Enemy3.png" id="3_t3bd4"]
-[ext_resource type="PackedScene" uid="uid://bu7vsgs5g88l3" path="res://Scenes/Weapons/Machette/Machette.tscn" id="4_v3lql"]
+[ext_resource type="Texture2D" uid="uid://cygmxe04wplie" path="res://Assets/Sprites/Enemy3.png" id="3_t3bd4"]
+[ext_resource type="PackedScene" uid="uid://cybqi2asm0sq0" path="res://Scenes/Weapons/Machette/Club.tscn" id="4_v3lql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b002v"]
 size = Vector2(32.6667, 26)

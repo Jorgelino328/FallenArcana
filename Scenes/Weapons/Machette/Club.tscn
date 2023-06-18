@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bu7vsgs5g88l3"]
+[gd_scene load_steps=6 format=3 uid="uid://cybqi2asm0sq0"]
 
-[ext_resource type="Script" path="res://Scenes/Weapons/Machette/Machette.gd" id="1_0snjd"]
-[ext_resource type="Texture2D" uid="uid://du52tb0nvrltb" path="res://Assets/Sprites/machette.png" id="2_nghay"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Machette/Club.gd" id="1_bwi1q"]
+[ext_resource type="Texture2D" uid="uid://c1xo0m6hwrj3n" path="res://Assets/Sprites/club.png" id="2_xrxrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dp1a"]
 size = Vector2(32, 40)
@@ -28,30 +28,31 @@ _data = {
 "shoot": SubResource("Animation_lgihr")
 }
 
-[node name="Machette" type="Area2D"]
+[node name="Club" type="Area2D"]
+texture_filter = 1
 rotation = 3.14159
-script = ExtResource("1_0snjd")
+script = ExtResource("1_bwi1q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -3)
 shape = SubResource("RectangleShape2D_4dp1a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 0.785398
-scale = Vector2(-0.3, 0.3)
-texture = ExtResource("2_nghay")
+position = Vector2(0.125167, -2.96167)
+scale = Vector2(-1.18381, 1.24638)
+texture = ExtResource("2_xrxrn")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(5.83092e-05, -23)
 
 [node name="ShootingAnimator" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_4sdtd")
 }
 
-[node name="MachetteCooldown" type="Timer" parent="."]
+[node name="ClubCooldown" type="Timer" parent="."]
 autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="timeout" from="MachetteCooldown" to="." method="_on_machette_cooldown_timeout"]
+[connection signal="timeout" from="ClubCooldown" to="." method="_on_machette_cooldown_timeout"]
