@@ -23,6 +23,8 @@ MusicBackground="*res://Scenes/music_background.tscn"
 
 window/vsync/vsync_mode=0
 mouse_cursor/custom_image="res://Assets/Sprites/trigger.png"
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 

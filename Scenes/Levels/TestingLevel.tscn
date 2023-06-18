@@ -98,10 +98,11 @@ target = NodePath("../Silas_Blackwood")
 
 [node name="Outlaw_melee" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_5inpu")]
 position = Vector2(104, 328)
+hp = 0
 target = NodePath("../Silas_Blackwood")
 
 [node name="Outlaw_Intermed" parent="." node_paths=PackedStringArray("target") instance=ExtResource("7_rpqcr")]
-hp = 1
+hp = 0
 target = NodePath("../Silas_Blackwood")
 metadata/_edit_lock_ = true
 
@@ -122,7 +123,5 @@ player = NodePath("../../Silas_Blackwood")
 [node name="Dialogue_UI" parent="CanvasLayer" instance=ExtResource("10_v6nvd")]
 visible = false
 
-[connection signal="picked_up" from="SixShooter" to="Silas_Blackwood" method="_on_picked_up"]
-[connection signal="picked_up" from="Shotgun" to="Silas_Blackwood" method="_on_picked_up"]
 [connection signal="shooting" from="Silas_Blackwood" to="SixShooter" method="_on_shooting"]
 [connection signal="shooting" from="Silas_Blackwood" to="Shotgun" method="_on_shooting"]
