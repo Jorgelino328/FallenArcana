@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 400
+@export var speed = 200
 @onready var current_speed = speed
 @export var dash_speed = 800
 @export var hp : int
@@ -10,27 +10,44 @@ extends CharacterBody2D
 var equipped_right = null
 var equipped_left = null
 var input_direction := Vector2.ZERO
+var last_dir := Vector2.ZERO
 var can_dash := true
 signal game_over()
 signal shooting(weapon,target)
 
 func get_input():
-	if position.distance_to(get_global_mouse_position()) > 10:
-		look_at(get_global_mouse_position())
-		rotation -= PI/2
-	if position.distance_to(get_global_mouse_position()) > 60:
-		if(equipped_right):
-			equipped_right.look_at(get_global_mouse_position())
-			equipped_right.rotation -= PI/2
-		if(equipped_left):
-			equipped_left.look_at(get_global_mouse_position())
-			equipped_left.rotation -= PI/2
+	#if position.distance_to(get_global_mouse_position()) > 10:
+	#	look_at(get_global_mouse_position())
+	#	rotation -= PI/2
+	#if position.distance_to(get_global_mouse_position()) > 60:
+	#	if(equipped_right):
+	#		equipped_right.look_at(get_global_mouse_position())
+	#		equipped_right.rotation -= PI/2
+	#	if(equipped_left):
+	#		equipped_left.look_at(get_global_mouse_position())
+	#		equipped_left.rotation -= PI/2
 	input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = input_direction * current_speed
-	if(velocity != Vector2(0,0)):
-		mv_animation.play("walking")
+	if(velocity.x > 1):
+		mv_animation.play("walking_right")
+		last_dir = input_direction
+	elif(velocity.x < -1):
+		mv_animation.play("walking_left")
+		last_dir = input_direction
+	elif(velocity.y > 1):
+		mv_animation.play("walking_down")
+		last_dir = input_direction
+	elif(velocity.y < -1):
+		mv_animation.play("walking_up")
+		last_dir = input_direction
+	elif(last_dir.x > 1):
+		mv_animation.play("idle_right")
+	elif(last_dir.x < -1):
+		mv_animation.play("idle_left")
+	elif(last_dir.y < -1):
+		mv_animation.play("idle_up")
 	else:
-		mv_animation.pause()
+		mv_animation.play("idle_down")
 
 func _process(delta):
 	if(Input.is_action_just_pressed("drop_weapon") && (equipped_right || equipped_left)):

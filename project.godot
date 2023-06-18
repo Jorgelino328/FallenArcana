@@ -21,6 +21,7 @@ MusicBackground="*res://Scenes/music_background.tscn"
 
 [display]
 
+window/vsync/vsync_mode=0
 mouse_cursor/custom_image="res://Assets/Sprites/trigger.png"
 
 [dotnet]
