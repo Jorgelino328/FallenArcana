@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://3clccthbrx77"]
+[gd_scene load_steps=26 format=3]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Level1.gd" id="1_w6x4t"]
 [ext_resource type="PackedScene" uid="uid://8wanx8w76435" path="res://Scenes/Actors/Player/Player.tscn" id="2_mfmky"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bxoss0kl3vo2m" path="res://Assets/Tilesets/fantasy_ [version 2.0]/desert_/desert_.png" id="5_tqwop"]
 [ext_resource type="PackedScene" uid="uid://q65uoa1mhf54" path="res://Scenes/Spawners/Basic_Spawner.tscn" id="8_wgjbk"]
 [ext_resource type="PackedScene" uid="uid://b5oetypwwalao" path="res://Scenes/Spawners/Melee_Spawner.tscn" id="9_0t10o"]
-[ext_resource type="PackedScene" uid="uid://d0tjiq8oe22qb" path="res://Scenes/Actors/Enemy/Outlaw_Basic.tscn" id="10_i16qn"]
+[ext_resource type="PackedScene" uid="uid://d0tjiq8oe22qb" path="res://Scenes/Actors/Enemy/Troll.tscn" id="10_i16qn"]
 [ext_resource type="Texture2D" uid="uid://ebselmndufi8" path="res://Assets/Tilesets/door.png" id="10_nv4xv"]
 [ext_resource type="Texture2D" uid="uid://bb20wp2n3xo2y" path="res://Assets/Tilesets/dungeonex.png" id="11_wq30v"]
 [ext_resource type="PackedScene" uid="uid://bg2kxmxyvb017" path="res://Scenes/Weapons/SixShooter/SixShooter.tscn" id="12_h62w8"]

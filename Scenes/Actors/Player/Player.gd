@@ -14,18 +14,16 @@ var equipped_left = null
 var input_direction := Vector2.ZERO
 var last_dir := Vector2.ZERO
 var can_dash := true
-var can_shoot := true
-var is_shooting := false
 
-var fireMagic = preload("res://Scenes/Weapons/Spells/Fire.tscn")
+var fireBolt = preload("res://Scenes/Weapons/Spells/FireBolt.tscn")
 
 signal game_over()
-signal shooting(weapon,target)
+signal shooting(spell,target)
 
 func get_input():
-	#if position.distance_to(get_global_mouse_position()) > 10:
-	#	look_at(get_global_mouse_position())
-	#	rotation -= PI/2
+	if position.distance_to(get_global_mouse_position()) > 60:
+		$Wand.look_at(get_global_mouse_position())
+		$Wand.rotation -= PI/2
 	#if position.distance_to(get_global_mouse_position()) > 60:
 	#	if(equipped_right):
 	#		equipped_right.look_at(get_global_mouse_position())
@@ -35,33 +33,38 @@ func get_input():
 	#		equipped_left.rotation -= PI/2
 	input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = input_direction * current_speed
-	if(velocity.x > 1 && !is_shooting):
+	if(velocity.x > 1):
 		mv_animation.play("walking_right")
 		last_dir = input_direction
-	elif(velocity.x < -1 && !is_shooting):
+		$Wand.position = Vector2(5,18)
+		$Wand.show_behind_parent = false
+	elif(velocity.x < -1):
 		mv_animation.play("walking_left")
 		last_dir = input_direction
-	elif(velocity.y > 1 && !is_shooting):
+		$Wand.position = Vector2(-5,18)
+		$Wand.show_behind_parent = false
+	elif(velocity.y > 1):
 		mv_animation.play("walking_down")
 		last_dir = input_direction
-	elif(velocity.y < -1 && !is_shooting):
+		$Wand.position = Vector2(-5,18)
+		$Wand.show_behind_parent = false
+	elif(velocity.y < -1):
 		mv_animation.play("walking_up")
 		last_dir = input_direction
-	elif(last_dir.x == 1 && !is_shooting):
+		$Wand.position = Vector2(10,8)
+		$Wand.show_behind_parent = true
+	elif(last_dir.x == 1):
 		mv_animation.play("idle_right")
-	elif(last_dir.x == -1 && !is_shooting):
+	elif(last_dir.x == -1):
 		mv_animation.play("idle_left")
-	elif(last_dir.y == -1 && !is_shooting):
+	elif(last_dir.y == -1):
 		mv_animation.play("idle_up")
-	elif(!is_shooting):
+	else:
 		mv_animation.play("idle_down")
 
 func _process(delta):
-	if(!mv_animation.is_playing()):
-		is_shooting = false
-	if(!is_shooting):
-		if Input.is_action_just_pressed("l_mouse"):
-			shoot_spell(fireMagic)
+	if Input.is_action_just_pressed("l_mouse"):
+		emit_signal("shooting",fireBolt,get_global_mouse_position())
 		
 func _physics_process(delta):
 	get_input()
@@ -74,8 +77,7 @@ func _physics_process(delta):
 		current_speed = speed
 		$BulletDetector/CollisionShape2D.set_disabled(false)	
 		$BodyCollision.set_disabled(false)	
-	if(!is_shooting):
-		move_and_slide()
+	move_and_slide()
 
 func dash():
 	$BulletDetector/CollisionShape2D.set_disabled(true)
@@ -99,33 +101,6 @@ func dash():
 #		equipped_left = weapon	
 #	else:
 #		pass
-
-func shoot_spell(spell):
-	#if(spell == fireMagic):
-	var spell_instance = fireMagic.instantiate()
-	is_shooting = true
-	if(last_dir.x == 1):
-		mv_animation.play("shooting_right")
-		spell_instance.global_position = $MarkerRight.global_position
-	elif(last_dir.x == -1):
-		mv_animation.play("shooting_left")
-		spell_instance.global_position = $MarkerLeft.global_position
-		spell_instance.rotation = deg_to_rad(180)
-	elif(last_dir.y == -1):
-		mv_animation.play("shooting_up")
-		spell_instance.global_position = $MarkerUp.global_position
-		spell_instance.rotation = deg_to_rad(270)
-	else:
-		mv_animation.play("shooting_down")
-		spell_instance.global_position = $MarkerDown.global_position
-		spell_instance.rotation = deg_to_rad(90)
-		
-	spell_instance.set_direction(last_dir)
-	print(spell_instance.rotation)
-	spell_instance.dmg_enemies = true
-	get_tree().get_root().add_child(spell_instance)
-	can_shoot = false
-
 func _on_bullet_detector_body_entered(body):
 	if(body is RigidBody2D):
 		match(body.id):

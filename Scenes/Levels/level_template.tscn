@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6x6cuen1hrya"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="PackedScene" uid="uid://8wanx8w76435" path="res://Scenes/Actors/Player/Player.tscn" id="1_5t0od"]
 [ext_resource type="PackedScene" uid="uid://dm5yftn60gmxe" path="res://Scenes/UIs/Player_HUD/PlayerHUD.tscn" id="2_gwkqr"]
-[ext_resource type="PackedScene" uid="uid://d0tjiq8oe22qb" path="res://Scenes/Actors/Enemy/Outlaw_Basic.tscn" id="3_uw8kq"]
+[ext_resource type="PackedScene" uid="uid://d0tjiq8oe22qb" path="res://Scenes/Actors/Enemy/Troll.tscn" id="3_uw8kq"]
 [ext_resource type="PackedScene" uid="uid://q65uoa1mhf54" path="res://Scenes/Spawners/Basic_Spawner.tscn" id="4_ac1nn"]
 
 [node name="LevelTemplate" type="Node2D"]

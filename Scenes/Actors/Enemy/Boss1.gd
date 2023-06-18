@@ -49,7 +49,6 @@ func slam():
 	if(animation.is_playing()):
 		var dmg = 1000/target.position.distance_to(position)
 		target.hp -= dmg
-		print("DANO : ",dmg)
 
 func gatling():
 	animation.play("gatling_spin")
@@ -81,5 +80,4 @@ func _on_phase_switch_timeout():
 		phase = 2
 	else:
 		phase = 1
-	print("PHASE:",phase)
 	

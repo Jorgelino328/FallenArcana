@@ -10,8 +10,10 @@ signal shooting(weapon,target)
 
 func _on_bullet_detector_body_entered(body):
 	if(body is RigidBody2D):
+		print("ouch")
 		match(body.id):
 			1:
+				print(-2)
 				if(body.dmg_enemies):
 					hp -= 2
 			2:
@@ -27,9 +29,9 @@ func _process(delta):
 		direction = Vector2.ZERO
 		
 func _physics_process(delta):
-	if position.distance_to(get_global_mouse_position()) > 10:
-		look_at(target.position)
-		rotation -= PI/2
+	#if position.distance_to(get_global_mouse_position()) > 10:
+	#	look_at(target.position)
+	#	rotation -= PI/2
 
 	if direction != Vector2.ZERO:
 		velocity = direction * speed
