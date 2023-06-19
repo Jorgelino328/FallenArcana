@@ -95,7 +95,6 @@ offset_top = 40.0
 offset_right = 63.0
 offset_bottom = 80.0
 theme = ExtResource("3_duxap")
-metadata/_edit_group_ = true
 
 [node name="btn_new_game" type="Button" parent="Control"]
 layout_mode = 1
@@ -104,21 +103,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 388.0
-offset_top = 300.0
-offset_right = 724.0
-offset_bottom = 349.0
+offset_left = 387.0
+offset_top = 360.0
+offset_right = 723.0
+offset_bottom = 409.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "New Game"
-
-[node name="btn_continue" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 408.0
-offset_top = 384.0
-offset_right = 744.0
-offset_bottom = 433.0
-text = "Continue"
 
 [node name="btn_settings" type="Button" parent="Control"]
 layout_mode = 0
@@ -138,6 +129,5 @@ offset_bottom = 561.0
 text = "Quit Game"
 
 [connection signal="pressed" from="Control/btn_new_game" to="." method="_on_btn_new_game_pressed"]
-[connection signal="pressed" from="Control/btn_continue" to="." method="_on_btn_continue_pressed"]
 [connection signal="pressed" from="Control/btn_settings" to="." method="_on_btn_settings_pressed"]
 [connection signal="pressed" from="Control/btn_quit" to="." method="_on_btn_quit_pressed"]

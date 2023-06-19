@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cybqi2asm0sq0"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Script" path="res://Scenes/Weapons/Machette/Club.gd" id="1_bwi1q"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Club/Club.gd" id="1_bwi1q"]
 [ext_resource type="Texture2D" uid="uid://c1xo0m6hwrj3n" path="res://Assets/Sprites/club.png" id="2_xrxrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dp1a"]

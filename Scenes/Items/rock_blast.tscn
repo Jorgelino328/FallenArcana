@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnm5uo1pmcq3c"]
+
+[ext_resource type="Script" path="res://Scenes/Items/rock_blast.gd" id="1_2q1w7"]
+[ext_resource type="Texture2D" uid="uid://us5e1mr8xy45" path="res://Assets/Sprites/sprites/Foozle_2DE0001_Pixel_Magic_Effects/Pixel_Magic_Effects_Icons.png" id="1_g8qxd"]
+[ext_resource type="AudioStream" uid="uid://d2qkv40yxrsxm" path="res://Assets/Audio/Menu FX example/Item1A.wav" id="3_pu4qq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p3lj"]
+size = Vector2(32, 32)
+
+[node name="RockBlast" type="Area2D"]
+texture_filter = 1
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_2q1w7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g8qxd")
+hframes = 10
+frame = 1
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3p3lj")
+
+[node name="PickedUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pu4qq")
+bus = &"Sound FX"

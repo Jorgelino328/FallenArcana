@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://hem5gu662hx1"]
+
+[ext_resource type="Texture2D" uid="uid://st7loojvh3vm" path="res://Assets/Sprites/Asha.png" id="1_cchdx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkrqf"]
+size = Vector2(16, 32)
+
+[sub_resource type="Animation" id="Animation_7grd2"]
+resource_name = "Idle"
+length = 1.5
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_qyrci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nrrhh"]
+resource_name = "steal"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 32, 33, 37, 38, 39, 20, 19, 18, 17, 16, 17, 18, 19, 41, 42, 43, 44, 45, 46, 47, 49]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ahn5b"]
+_data = {
+"Idle": SubResource("Animation_7grd2"),
+"RESET": SubResource("Animation_qyrci"),
+"steal": SubResource("Animation_nrrhh")
+}
+
+[node name="Asha" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cchdx")
+hframes = 10
+vframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tkrqf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ahn5b")
+}

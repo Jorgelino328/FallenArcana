@@ -1,11 +1,14 @@
 extends CharacterBody2D
 @export var hp : int
 @export var target : CharacterBody2D
-@export var speed = 100
+@export var speed := 200
 @onready var animation := $AnimationPlayer
 var direction := Vector2.ZERO
 
 signal shooting(weapon,target)
+
+func _ready():
+	animation.play("flying")
 	
 func _on_bullet_detector_body_entered(body):
 	if(body is RigidBody2D):
@@ -26,16 +29,15 @@ func _process(delta):
 		direction = Vector2.ZERO
 		
 func _physics_process(delta):
-	if position.distance_to(target.global_position) > 10:
-		look_at(target.position)
-		rotation -= PI/2
-		
+	if position.distance_to(get_global_mouse_position()) > 10:
+		$Blaster.look_at(target.position)
+		$Blaster.rotation -= PI/2
+
 	if direction != Vector2.ZERO:
 		velocity = direction * speed
-		animation.play("walking")
 		move_and_slide()
-	else:
-		animation.pause()
 
 func _on_timer_timeout():
-	emit_signal("shooting",$Shotgun,target.global_position)
+	if(randi_range(1,3) == 1 && position.distance_to(target.position) < 500):
+		emit_signal("shooting",$Blaster,target.global_position)
+		

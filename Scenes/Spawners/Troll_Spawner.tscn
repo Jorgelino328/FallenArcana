@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://q65uoa1mhf54"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Scenes/Spawners/Basic_Spawner.gd" id="1_2gfrs"]
+[ext_resource type="Script" path="res://Scenes/Spawners/Troll_Spawner.gd" id="1_2gfrs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yqow"]
 size = Vector2(121, 167.5)

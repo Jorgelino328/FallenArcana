@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://351p1j3fhs11"]
+[gd_scene load_steps=8 format=3 uid="uid://fl5ryjleaqos"]
 
-[ext_resource type="Script" path="res://Scenes/Weapons/Spells/FireBolt.gd" id="1_ru8xv"]
-[ext_resource type="Texture2D" uid="uid://cm6hcrc2eqo0d" path="res://Assets/Sprites/sprites/Foozle_2DE0001_Pixel_Magic_Effects/Pixel_Magic_Effects_Animations.png" id="2_7yuht"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Spells/RockBlast.gd" id="1_28onu"]
+[ext_resource type="Texture2D" uid="uid://cm6hcrc2eqo0d" path="res://Assets/Sprites/sprites/Foozle_2DE0001_Pixel_Magic_Effects/Pixel_Magic_Effects_Animations.png" id="1_w1wj1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dfeyc"]
-radius = 6.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sclfs"]
+radius = 7.0
+height = 26.0
 
-[sub_resource type="Animation" id="Animation_ivn1o"]
+[sub_resource type="Animation" id="Animation_wdoqv"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -21,7 +22,7 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_3vxhs"]
+[sub_resource type="Animation" id="Animation_43abm"]
 resource_name = "end_shot"
 length = 0.44
 tracks/0/type = "value"
@@ -34,10 +35,10 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 5), Vector2i(0, 6), Vector2i(0, 7), Vector2i(0, 8), Vector2i(0, 9)]
+"values": [Vector2i(1, 5), Vector2i(1, 6), Vector2i(1, 7), Vector2i(1, 8), Vector2i(1, 9)]
 }
 
-[sub_resource type="Animation" id="Animation_oi4fb"]
+[sub_resource type="Animation" id="Animation_6gc4k"]
 resource_name = "shooting"
 loop_mode = 1
 step = 0.2
@@ -51,41 +52,42 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 4)]
+"values": [Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2), Vector2i(1, 3), Vector2i(1, 4)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rqjms"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lepyx"]
 _data = {
-"RESET": SubResource("Animation_ivn1o"),
-"end_shot": SubResource("Animation_3vxhs"),
-"shooting": SubResource("Animation_oi4fb")
+"RESET": SubResource("Animation_wdoqv"),
+"end_shot": SubResource("Animation_43abm"),
+"shooting": SubResource("Animation_6gc4k")
 }
 
-[node name="FireBolt" type="RigidBody2D"]
-texture_filter = 1
+[node name="RockBlast" type="RigidBody2D"]
 collision_layer = 32
 collision_mask = 84
 gravity_scale = 0.0
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
-script = ExtResource("1_ru8xv")
-metadata/_edit_lock_ = true
+script = ExtResource("1_28onu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, -18)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_7yuht")
+texture = ExtResource("1_w1wj1")
+centered = false
 hframes = 9
 vframes = 13
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7, 0)
-shape = SubResource("CircleShape2D_dfeyc")
+position = Vector2(15, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_sclfs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_rqjms")
+"": SubResource("AnimationLibrary_lepyx")
 }
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

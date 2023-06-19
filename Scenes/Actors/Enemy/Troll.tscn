@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxw8jtmy4qq5n"]
+[gd_scene load_steps=16 format=3 uid="uid://b53bpi54aj4f2"]
 
 [ext_resource type="Script" path="res://Scenes/Actors/Enemy/Troll.gd" id="1_h240c"]
 [ext_resource type="Texture2D" uid="uid://n1u217tcjll5" path="res://Assets/Sprites/Monsters/Animations/Swamp Troll/SwampTroll_Expanded.png" id="2_yfj7n"]
-[ext_resource type="PackedScene" uid="uid://cybqi2asm0sq0" path="res://Scenes/Weapons/Machette/Club.tscn" id="3_b7mxk"]
+[ext_resource type="PackedScene" path="res://Scenes/Weapons/Club/Club.tscn" id="3_b7mxk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80hda"]
 size = Vector2(57, 60)
@@ -228,6 +228,7 @@ collision_layer = 16
 collision_mask = 116
 script = ExtResource("1_h240c")
 hp = 10
+speed = 150
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -251,6 +252,7 @@ libraries = {
 [node name="Club" parent="." instance=ExtResource("3_b7mxk")]
 position = Vector2(5, 19)
 rotation = 1.5708
+equipped = true
 
 [node name="BulletDetector" type="Area2D" parent="."]
 collision_layer = 16

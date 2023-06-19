@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 200
+@export var speed := 200
 @onready var current_speed = speed
 @export var dash_speed = 800
 @export var hp : int
@@ -16,21 +16,18 @@ var last_dir := Vector2.ZERO
 var can_dash := true
 
 var fireBolt = preload("res://Scenes/Weapons/Spells/FireBolt.tscn")
+var rockBlast = preload("res://Scenes/Weapons/Spells/RockBlast.tscn")
+var knownsRock = false
 
+@onready var selectedSpell = fireBolt
 signal game_over()
 signal shooting(spell,target)
+
 
 func get_input():
 	if position.distance_to(get_global_mouse_position()) > 60:
 		$Wand.look_at(get_global_mouse_position())
 		$Wand.rotation -= PI/2
-	#if position.distance_to(get_global_mouse_position()) > 60:
-	#	if(equipped_right):
-	#		equipped_right.look_at(get_global_mouse_position())
-	#		equipped_right.rotation -= PI/2
-	#	if(equipped_left):
-	#		equipped_left.look_at(get_global_mouse_position())
-	#		equipped_left.rotation -= PI/2
 	input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = input_direction * current_speed
 	if(velocity.x > 1):
@@ -61,10 +58,18 @@ func get_input():
 		mv_animation.play("idle_up")
 	else:
 		mv_animation.play("idle_down")
-
+		
 func _process(delta):
 	if Input.is_action_just_pressed("l_mouse"):
-		emit_signal("shooting",fireBolt,get_global_mouse_position())
+		emit_signal("shooting",selectedSpell,get_global_mouse_position())
+	if Input.is_action_just_pressed("1"):
+		get_parent().fire.selected = true
+		get_parent().rock.selected = false
+		selectedSpell = fireBolt
+	elif Input.is_action_just_pressed("2") && knownsRock:
+		get_parent().fire.selected = false
+		get_parent().rock.selected = true
+		selectedSpell = rockBlast
 		
 func _physics_process(delta):
 	get_input()
@@ -102,6 +107,7 @@ func dash():
 #	else:
 #		pass
 func _on_bullet_detector_body_entered(body):
+	print("ouch")
 	if(body is RigidBody2D):
 		match(body.id):
 			1:

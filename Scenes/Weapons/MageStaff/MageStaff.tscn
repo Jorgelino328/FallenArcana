@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bg2kxmxyvb017"]
+[gd_scene load_steps=8 format=3 uid="uid://civnk7ofms1at"]
 
-[ext_resource type="Script" path="res://Scenes/Weapons/SixShooter/SixShooter.gd" id="1_py327"]
-[ext_resource type="Texture2D" uid="uid://b6f5w2v4s3184" path="res://Assets/Sprites/sixShooter.png" id="1_vc57k"]
-[ext_resource type="Texture2D" uid="uid://tl6ufo75r4ti" path="res://Assets/Sprites/fire.png" id="3_1ns4g"]
-[ext_resource type="AudioStream" uid="uid://dj160wno4clem" path="res://Assets/Audio/shots/pistol.wav" id="4_i7q6n"]
+[ext_resource type="Script" path="res://Scenes/Weapons/MageStaff/MageStaff.gd" id="1_s0je7"]
+[ext_resource type="Texture2D" uid="uid://tl6ufo75r4ti" path="res://Assets/Sprites/fire.png" id="2_cexdo"]
+[ext_resource type="AudioStream" uid="uid://bb654qx1u77xw" path="res://Assets/Audio/mike_koenig-shotgun/10 Guage Shotgun-SoundBible.com-74120584.wav" id="3_4aihh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oird"]
-size = Vector2(9.5, 33.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs1xw"]
+size = Vector2(12.5, 14.25)
 
 [sub_resource type="Animation" id="Animation_j1aiq"]
 length = 0.001
@@ -58,30 +57,26 @@ _data = {
 "shoot": SubResource("Animation_c1bq4")
 }
 
-[node name="SixShooter" type="Area2D"]
+[node name="MageStaff" type="Area2D"]
 texture_filter = 1
 collision_layer = 8
 collision_mask = 16
-script = ExtResource("1_py327")
+script = ExtResource("1_s0je7")
+pelletCount = 10
+spread = 0.3
+equipped = true
 
-[node name="SixShooterCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0.25, 0.25)
-shape = SubResource("RectangleShape2D_7oird")
+[node name="ShotgunCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hs1xw")
 
-[node name="SixShooterSprite" type="Sprite2D" parent="."]
-position = Vector2(-1, 0)
-rotation = 3.14159
-scale = Vector2(0.3, 0.267)
-texture = ExtResource("1_vc57k")
-
-[node name="GunEnd" type="Marker2D" parent="."]
-position = Vector2(0, 17)
+[node name="StaffEnd" type="Marker2D" parent="."]
 
 [node name="ShootingSprite" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, 21)
-rotation = 3.14159
-texture = ExtResource("3_1ns4g")
+modulate = Color(0.454902, 0.00392157, 0.784314, 1)
+position = Vector2(0, -11)
+scale = Vector2(2.24266, 2.48059)
+texture = ExtResource("2_cexdo")
 hframes = 4
 
 [node name="ShootingAnimator" type="AnimationPlayer" parent="."]
@@ -90,11 +85,10 @@ libraries = {
 }
 
 [node name="GunCooldown" type="Timer" parent="."]
-wait_time = 0.3
 autostart = true
 
-[node name="PistolShot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_i7q6n")
+[node name="MageShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4aihh")
 bus = &"Sound FX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

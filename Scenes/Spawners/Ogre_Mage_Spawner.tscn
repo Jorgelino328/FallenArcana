@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://jrni753yijda"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Scenes/Spawners/Intermed_Spawner.gd" id="1_bpjum"]
+[ext_resource type="Script" path="res://Scenes/Spawners/Ogre_Mage_Spawner.gd" id="1_bpjum"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfof8"]
 size = Vector2(121, 167.5)

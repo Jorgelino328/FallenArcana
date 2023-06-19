@@ -60,6 +60,8 @@ _data = {
 [node name="Wand" type="Area2D"]
 texture_filter = 1
 script = ExtResource("1_qpvbx")
+pelletCount = 10
+spread = 0.3
 
 [node name="WandCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)
@@ -88,3 +90,5 @@ libraries = {
 
 [node name="GunCooldown" type="Timer" parent="."]
 autostart = true
+
+[connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]

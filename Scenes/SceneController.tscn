@@ -14,3 +14,4 @@ script = ExtResource("1_ste0x")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("3_xijih")
+max_distance = 50000.0

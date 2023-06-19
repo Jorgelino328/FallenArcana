@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3h5w7qbcwgi5"]
+
+[ext_resource type="Theme" uid="uid://c3u7pkv4gva6m" path="res://Scenes/UIs/UI_Settings/PurpleMana.tres" id="1_2hcdc"]
+
+[node name="EndGame" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_2hcdc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 67.0
+offset_right = 1092.0
+offset_bottom = 553.0
+theme = ExtResource("1_2hcdc")
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 9
+theme_override_constants/shadow_outline_size = 22
+theme_override_font_sizes/font_size = 100
+text = "Fim da build atual.
+Obrigado por jogar!"
+
+[node name="btn_menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 440.0
+offset_right = 744.0
+offset_bottom = 489.0
+text = "Main Menu
+"
+
+[node name="btn_quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 504.0
+offset_right = 744.0
+offset_bottom = 553.0
+text = "Quit Game"

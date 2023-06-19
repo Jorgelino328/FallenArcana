@@ -1,13 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm5yftn60gmxe"]
+[gd_scene load_steps=12 format=3 uid="uid://dm5yftn60gmxe"]
 
 [ext_resource type="Texture2D" uid="uid://cunu35cyfyvjq" path="res://Assets/Sprites/health.png" id="1_7ewnm"]
 [ext_resource type="Theme" uid="uid://c3u7pkv4gva6m" path="res://Scenes/UIs/UI_Settings/PurpleMana.tres" id="1_badhu"]
 [ext_resource type="Script" path="res://Scenes/UIs/Player_HUD/PlayerHUD.gd" id="2_4bcoa"]
 [ext_resource type="Texture2D" uid="uid://cwqq2a8p5khar" path="res://Assets/Sprites/health_empty.png" id="2_pv6ku"]
+[ext_resource type="StyleBox" uid="uid://cqhyfjss17yxj" path="res://Scenes/UIs/Player_HUD/Inventory.tres" id="5_gnlao"]
+[ext_resource type="Script" path="res://Scenes/UIs/Player_HUD/Slot.gd" id="7_0lqq7"]
+[ext_resource type="StyleBox" path="res://Scenes/UIs/UI_Settings/InvBox.tres" id="7_ai6r5"]
+[ext_resource type="Texture2D" uid="uid://us5e1mr8xy45" path="res://Assets/Sprites/sprites/Foozle_2DE0001_Pixel_Magic_Effects/Pixel_Magic_Effects_Icons.png" id="7_g4k14"]
+[ext_resource type="Texture2D" uid="uid://dywya2aeb5v4j" path="res://Assets/Sprites/select.png" id="8_x1xhl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1psq"]
+
+[sub_resource type="Theme" id="Theme_86c0u"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_i1psq")
 
 [node name="PlayerHUD" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
 theme = ExtResource("1_badhu")
 script = ExtResource("2_4bcoa")
 
@@ -28,11 +44,13 @@ texture_progress = ExtResource("1_7ewnm")
 tint_under = Color(0, 0.0588235, 0.0196078, 0.968627)
 tint_over = Color(0.0235294, 0.278431, 0.0627451, 1)
 tint_progress = Color(0.109804, 0.862745, 0.247059, 1)
+metadata/_edit_lock_ = true
 
 [node name="HPLabel" type="Label" parent="."]
 layout_mode = 0
+offset_left = 8.0
 offset_top = 8.0
-offset_right = 49.0
+offset_right = 57.0
 offset_bottom = 60.0
 text = "HP
 "
@@ -46,14 +64,198 @@ offset_left = 12.0
 offset_top = 68.0
 offset_right = 89.0
 offset_bottom = 120.0
-text = "Dash Cooldown:"
+text = "Cooldown do Teleporte :"
+metadata/_edit_lock_ = true
 
 [node name="DashAmount" type="Label" parent="DashLabel"]
 layout_mode = 0
-offset_left = 212.0
+offset_left = 284.0
 offset_top = -4.0
-offset_right = 252.0
+offset_right = 324.0
 offset_bottom = 48.0
 text = "  0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Inventory" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -8.0
+offset_right = -16.0
+offset_bottom = -8.0
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="Inventory"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 24.0
+offset_right = 1152.0
+offset_bottom = 120.0
+theme_override_styles/panel = ExtResource("5_gnlao")
+metadata/_edit_lock_ = true
+
+[node name="GridContainer" type="GridContainer" parent="Inventory"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 32.0
+offset_right = 1088.0
+offset_bottom = 112.0
+theme_override_constants/h_separation = 16
+columns = 6
+metadata/_edit_lock_ = true
+
+[node name="Fire" type="Panel" parent="Inventory/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = ExtResource("7_ai6r5")
+script = ExtResource("7_0lqq7")
+metadata/_edit_lock_ = true
+
+[node name="Spell" type="Sprite2D" parent="Inventory/GridContainer/Fire"]
+texture_filter = 1
+position = Vector2(40, 40)
+scale = Vector2(2.66666, 2.66667)
+texture = ExtResource("7_g4k14")
+hframes = 10
+
+[node name="Select" type="TextureRect" parent="Inventory/GridContainer/Fire"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 88.0
+offset_bottom = 88.0
+theme = SubResource("Theme_86c0u")
+texture = ExtResource("8_x1xhl")
+
+[node name="Earth" type="Panel" parent="Inventory/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_ai6r5")
+script = ExtResource("7_0lqq7")
+
+[node name="Spell" type="Sprite2D" parent="Inventory/GridContainer/Earth"]
+visible = false
+texture_filter = 1
+position = Vector2(40, 40)
+scale = Vector2(2.66666, 2.66667)
+texture = ExtResource("7_g4k14")
+hframes = 10
+frame = 1
+
+[node name="Select" type="TextureRect" parent="Inventory/GridContainer/Earth"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 88.0
+offset_bottom = 88.0
+theme = SubResource("Theme_86c0u")
+texture = ExtResource("8_x1xhl")
+
+[node name="Water" type="Panel" parent="Inventory/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_ai6r5")
+script = ExtResource("7_0lqq7")
+
+[node name="Spell" type="Sprite2D" parent="Inventory/GridContainer/Water"]
+visible = false
+texture_filter = 1
+position = Vector2(40, 40)
+scale = Vector2(2.66666, 2.66667)
+texture = ExtResource("7_g4k14")
+hframes = 10
+frame = 2
+
+[node name="Select" type="TextureRect" parent="Inventory/GridContainer/Water"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 88.0
+offset_bottom = 88.0
+theme = SubResource("Theme_86c0u")
+texture = ExtResource("8_x1xhl")
+
+[node name="Wind" type="Panel" parent="Inventory/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_ai6r5")
+script = ExtResource("7_0lqq7")
+
+[node name="Spell" type="Sprite2D" parent="Inventory/GridContainer/Wind"]
+visible = false
+texture_filter = 1
+position = Vector2(40, 40)
+scale = Vector2(2.66666, 2.66667)
+texture = ExtResource("7_g4k14")
+hframes = 10
+frame = 3
+
+[node name="Select" type="TextureRect" parent="Inventory/GridContainer/Wind"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 88.0
+offset_bottom = 88.0
+theme = SubResource("Theme_86c0u")
+texture = ExtResource("8_x1xhl")
+
+[node name="Vortex" type="Panel" parent="Inventory/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_ai6r5")
+script = ExtResource("7_0lqq7")
+
+[node name="Spell" type="Sprite2D" parent="Inventory/GridContainer/Vortex"]
+visible = false
+texture_filter = 1
+position = Vector2(40, 40)
+scale = Vector2(2.66666, 2.66667)
+texture = ExtResource("7_g4k14")
+hframes = 10
+frame = 4
+
+[node name="Select" type="TextureRect" parent="Inventory/GridContainer/Vortex"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 88.0
+offset_bottom = 88.0
+theme = SubResource("Theme_86c0u")
+texture = ExtResource("8_x1xhl")
+
+[node name="Lightining" type="Panel" parent="Inventory/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_ai6r5")
+script = ExtResource("7_0lqq7")
+
+[node name="Spell" type="Sprite2D" parent="Inventory/GridContainer/Lightining"]
+visible = false
+texture_filter = 1
+position = Vector2(40, 40)
+scale = Vector2(2.66666, 2.66667)
+texture = ExtResource("7_g4k14")
+hframes = 10
+frame = 5
+
+[node name="Select" type="TextureRect" parent="Inventory/GridContainer/Lightining"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 88.0
+offset_bottom = 88.0
+theme = SubResource("Theme_86c0u")
+texture = ExtResource("8_x1xhl")

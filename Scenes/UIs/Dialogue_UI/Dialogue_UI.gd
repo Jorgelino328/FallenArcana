@@ -1,8 +1,7 @@
 extends Control
-@export var dialoguePath = "res://Assets/Dialogue/Tutorial.json"
+@export var dialoguePath = "res://Assets/Dialogue/Intro.json"
 @export var textSpeed := 0.05
 var dialogue
-
 var phraseNum = 0 
 var finished = false
 
@@ -22,7 +21,6 @@ func _process(delta):
 		#get_tree().paused = false
 
 func getDialogue():
-	
 	var f = FileAccess.open(dialoguePath,FileAccess.READ)
 	assert(f.file_exists(dialoguePath), "File path does not exist")
 	var json_object = JSON.new()
