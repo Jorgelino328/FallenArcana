@@ -107,7 +107,7 @@ func dash():
 #	else:
 #		pass
 func _on_bullet_detector_body_entered(body):
-	print("ouch")
+	$Ouch.play()
 	if(body is RigidBody2D):
 		match(body.id):
 			1:

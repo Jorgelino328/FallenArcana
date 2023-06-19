@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cqjhh3rx6rep8" path="res://Assets/Weapons Kit/Armi Black png.png" id="9_w0ij5"]
 [ext_resource type="PackedScene" uid="uid://cwjmw77exoast" path="res://Scenes/Items/HealthKit.tscn" id="10_wt21g"]
 [ext_resource type="PackedScene" uid="uid://dm5yftn60gmxe" path="res://Scenes/UIs/Player_HUD/PlayerHUD.tscn" id="12_m7wir"]
-[ext_resource type="AudioStream" uid="uid://cmqi5c56k43eb" path="res://Assets/earth-rumble-6953.mp3" id="14_8a1u6"]
+[ext_resource type="AudioStream" uid="uid://deri1tqagtetj" path="res://Assets/Audio/earth-rumble-6953.mp3" id="14_1y12f"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_anugr"]
 tile_data = PackedInt32Array(0, 3, 65536, 65536, 65539, 65536, 131072, 65539, 131073)
@@ -846,8 +846,6 @@ position = Vector2(152, 80)
 [node name="Player" parent="." instance=ExtResource("2_mjf0j")]
 process_mode = 1
 position = Vector2(80, 72)
-speed = null
-dash_speed = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -905,7 +903,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Earthquake" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("14_8a1u6")
+stream = ExtResource("14_1y12f")
 
 [node name="OuterZone" type="Area2D" parent="."]
 collision_layer = 64

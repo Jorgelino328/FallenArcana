@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3h5w7qbcwgi5"]
+[gd_scene load_steps=3 format=3 uid="uid://d3h5w7qbcwgi5"]
 
 [ext_resource type="Theme" uid="uid://c3u7pkv4gva6m" path="res://Scenes/UIs/UI_Settings/PurpleMana.tres" id="1_2hcdc"]
+[ext_resource type="Script" path="res://Scenes/UIs/End/EndGame.gd" id="2_h7nev"]
 
 [node name="EndGame" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_2hcdc")
+script = ExtResource("2_h7nev")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -37,3 +39,6 @@ offset_top = 504.0
 offset_right = 744.0
 offset_bottom = 553.0
 text = "Quit Game"
+
+[connection signal="pressed" from="btn_menu" to="." method="_on_btn_menu_pressed"]
+[connection signal="pressed" from="btn_quit" to="." method="_on_btn_quit_pressed"]

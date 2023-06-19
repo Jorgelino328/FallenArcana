@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://8wanx8w76435"]
+[gd_scene load_steps=24 format=3 uid="uid://8wanx8w76435"]
 
 [ext_resource type="Script" path="res://Scenes/Actors/Player/Player.gd" id="1_qogup"]
 [ext_resource type="Texture2D" uid="uid://ddvy7vad128gf" path="res://Assets/Sprites/Tulius.png" id="2_cmt16"]
 [ext_resource type="PackedScene" uid="uid://fyl2otukb76o" path="res://Scenes/Weapons/Wand/Wand.tscn" id="2_oj6sg"]
+[ext_resource type="AudioStream" uid="uid://bhuybj4hp6x4y" path="res://Assets/Audio/ough-47202.mp3" id="2_xeelq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ede06"]
 size = Vector2(34, 54)
@@ -363,6 +364,11 @@ collision_mask = 84
 script = ExtResource("1_qogup")
 hp = 50
 metadata/_edit_lock_ = true
+
+[node name="Ouch" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-13, 28)
+scale = Vector2(1.5, 1.5)
+stream = ExtResource("2_xeelq")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

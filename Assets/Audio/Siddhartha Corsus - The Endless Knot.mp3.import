@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1bukn0gooqi"
+path="res://.godot/imported/Siddhartha Corsus - The Endless Knot.mp3-01f0f117e31663a92ffa48eab111f1c7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Siddhartha Corsus - The Endless Knot.mp3"
+dest_files=["res://.godot/imported/Siddhartha Corsus - The Endless Knot.mp3-01f0f117e31663a92ffa48eab111f1c7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

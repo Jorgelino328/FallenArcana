@@ -2,6 +2,7 @@ class_name Level extends Node2D
 var game_over = load("res://Scenes/UIs/Game_Over/Game_Over.tscn")
 var dialogueUI = preload("res://Scenes/UIs/Dialogue_UI/Dialogue_UI.tscn")
 signal next_level(level)
+signal change_song(new_song)
 
 @onready var fire = $CanvasLayer/PlayerHUD/Inventory/GridContainer/Fire
 @onready var rock = $CanvasLayer/PlayerHUD/Inventory/GridContainer/Earth

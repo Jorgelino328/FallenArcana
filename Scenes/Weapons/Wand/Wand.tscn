@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://fyl2otukb76o"]
+[gd_scene load_steps=9 format=3 uid="uid://fyl2otukb76o"]
 
 [ext_resource type="Script" path="res://Scenes/Weapons/Wand/Wand.gd" id="1_qpvbx"]
 [ext_resource type="Texture2D" uid="uid://dyd5fhmry5vx8" path="res://Assets/Sprites/wand.png" id="2_7ft7b"]
 [ext_resource type="Texture2D" uid="uid://tl6ufo75r4ti" path="res://Assets/Sprites/fire.png" id="2_kbc4r"]
+[ext_resource type="AudioStream" uid="uid://ctngp26o53olk" path="res://Assets/Audio/short-fireball-woosh-6146.mp3" id="4_lcl1h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_or1pd"]
 size = Vector2(6, 17)
@@ -90,5 +91,8 @@ libraries = {
 
 [node name="GunCooldown" type="Timer" parent="."]
 autostart = true
+
+[node name="WandShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lcl1h")
 
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]

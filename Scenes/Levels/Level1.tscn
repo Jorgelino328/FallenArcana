@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://lvprwktk65ae"]
+[gd_scene load_steps=19 format=3 uid="uid://lvprwktk65ae"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Level1.gd" id="1_w6x4t"]
 [ext_resource type="PackedScene" uid="uid://8wanx8w76435" path="res://Scenes/Actors/Player/Player.tscn" id="2_mfmky"]
@@ -1346,6 +1346,9 @@ physics_layer_0/collision_layer = 48
 physics_layer_0/collision_mask = 65535
 sources/0 = SubResource("TileSetAtlasSource_x584t")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cia8u"]
+size = Vector2(898, 438)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7rq7d"]
 radius = 59.3806
 height = 318.016
@@ -1438,6 +1441,16 @@ player = NodePath("../../Player")
 spread = 1000
 enemy_max = 2
 
+[node name="FinalArena" type="Area2D" parent="."]
+position = Vector2(988, 439)
+collision_layer = 2
+collision_mask = 16
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalArena"]
+position = Vector2(-394, -101)
+shape = SubResource("RectangleShape2D_cia8u")
+
 [node name="RockBlast" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_x6kn5")]
 position = Vector2(823, 321)
 player = NodePath("../Player")
@@ -1449,7 +1462,7 @@ collision_mask = 16
 player = NodePath("../Player")
 
 [node name="HealthKit2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("14_pyvls")]
-position = Vector2(3109, 332)
+position = Vector2(3119, 327)
 collision_layer = 4
 collision_mask = 16
 player = NodePath("../Player")
@@ -1501,5 +1514,7 @@ metadata/_edit_lock_ = true
 position = Vector2(432, 225)
 target = NodePath("../Player")
 
+[connection signal="body_entered" from="FinalArena" to="." method="_on_final_arena_body_entered"]
+[connection signal="body_exited" from="FinalArena" to="." method="_on_final_arena_body_exited"]
 [connection signal="body_entered" from="RockBlast" to="RockBlast" method="_on_body_entered"]
 [connection signal="body_entered" from="Pit" to="." method="_on_pit_body_entered"]
