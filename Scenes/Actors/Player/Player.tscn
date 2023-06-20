@@ -369,6 +369,7 @@ metadata/_edit_lock_ = true
 position = Vector2(-13, 28)
 scale = Vector2(1.5, 1.5)
 stream = ExtResource("2_xeelq")
+bus = &"Sound FX"
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

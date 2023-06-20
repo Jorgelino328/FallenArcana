@@ -4,6 +4,9 @@ extends Control
 @onready var Audio = $Audio
 signal back_menu()
 
+func _ready():
+	volume(0,0.5)
+
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		toggle()
@@ -18,8 +21,6 @@ func show_and_hide(first,second):
 	first.show()
 	second.hide()
 	
-
-
 func _on_exit_pressed():
 	get_tree().quit()
 
@@ -57,21 +58,20 @@ func _on_back_from_video_pressed():
 
 
 func _on_master_value_changed(value):
-	if(value <= 70):
-		volume(0,value)
+	volume(0,value)
 	
+
 func volume(bus_index,value):
-	AudioServer.set_bus_volume_db(bus_index,value)
+	print(linear_to_db(value))
+	AudioServer.set_bus_volume_db(bus_index,linear_to_db(value))
 
 
 func _on_music_value_changed(value):
-	if(value <= 70):
-		volume(0,value)
+	volume(1,value)
 
 
 func _on_sound_fx_value_changed(value):
-	if(value <= 70):
-		volume(0,value)
+	volume(2,value)
 
 
 func _on_back_from_audio_pressed():

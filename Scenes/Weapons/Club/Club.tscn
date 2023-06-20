@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://vpu1hghbnoao"]
 
 [ext_resource type="Script" path="res://Scenes/Weapons/Club/Club.gd" id="1_bwi1q"]
 [ext_resource type="Texture2D" uid="uid://c1xo0m6hwrj3n" path="res://Assets/Sprites/club.png" id="2_xrxrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dp1a"]
-size = Vector2(32, 40)
+size = Vector2(6, 7)
 
 [sub_resource type="Animation" id="Animation_lgihr"]
 resource_name = "shoot_down"
@@ -87,7 +87,7 @@ texture_filter = 1
 script = ExtResource("1_bwi1q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.43051e-06, 16)
+position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_4dp1a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -95,6 +95,7 @@ position = Vector2(-1.98185e-06, 16)
 rotation = 3.14159
 scale = Vector2(-1.18381, 1.24638)
 texture = ExtResource("2_xrxrn")
+metadata/_edit_lock_ = true
 
 [node name="ShootingAnimator" type="AnimationPlayer" parent="."]
 libraries = {

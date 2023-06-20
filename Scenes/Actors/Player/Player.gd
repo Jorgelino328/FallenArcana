@@ -4,7 +4,6 @@ extends CharacterBody2D
 @onready var current_speed = speed
 @export var dash_speed = 800
 @export var hp : int
-@export var map : TileMap 
 @onready var mv_animation := $MovementAnimator
 @onready var ac_animation := $ActionAnimator
 
@@ -91,21 +90,6 @@ func dash():
 	can_dash = false
 	$DashCooldown.start()
 
-#func _on_picked_up(weapon):
-#	if !equipped_right:
-#		weapon.equipped = true
-#		weapon.get_parent().remove_child(weapon)
-#		$PlayerHandRight/HandRightCollision.add_sibling(weapon)
-#		weapon.position = $PlayerHandRight.position - Vector2(-30,13)
-#		equipped_right = weapon
-#	elif !equipped_left:
-#		weapon.equipped = true
-#		weapon.get_parent().remove_child(weapon)
-#		$PlayerHandLeft/HandLeftCollision.add_sibling(weapon)
-#		weapon.position = $PlayerHandLeft.position - Vector2(30,13)
-#		equipped_left = weapon	
-#	else:
-#		pass
 func _on_bullet_detector_body_entered(body):
 	$Ouch.play()
 	if(body is RigidBody2D):

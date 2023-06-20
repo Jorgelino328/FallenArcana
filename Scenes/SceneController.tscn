@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfvudvk524psi"]
+[gd_scene load_steps=3 format=3 uid="uid://cfvudvk524psi"]
 
 [ext_resource type="Script" path="res://Scenes/SceneController.gd" id="1_ste0x"]
 [ext_resource type="PackedScene" uid="uid://dm0epwcnjr1c3" path="res://Scenes/UIs/Menus/Main_Menu/main_menu.tscn" id="2_m0op5"]
-[ext_resource type="AudioStream" uid="uid://b8hhxppj5jwfy" path="res://Assets/Audio/Minstrels-Song.mp3" id="3_tkxc3"]
 
 [node name="SceneController" type="Node"]
 process_mode = 1
@@ -13,6 +12,6 @@ script = ExtResource("1_ste0x")
 [node name="Audio" type="Node" parent="."]
 process_mode = 3
 
-[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("3_tkxc3")
-max_distance = 50000.0
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="Audio"]
+autoplay = true
+bus = &"Music"

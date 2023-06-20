@@ -82,6 +82,6 @@ texture = ExtResource("3_ivnc2")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="dialogueTick" type="AudioStreamPlayer2D" parent="."]
+[node name="dialogueTick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_rb1fu")
 bus = &"Sound FX"

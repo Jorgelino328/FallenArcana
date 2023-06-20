@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var hp : int
+@export var hp := 10
 @export var target : CharacterBody2D
 @export var speed := 200
 @onready var animation := $AnimationPlayer
@@ -21,7 +21,7 @@ func _on_bullet_detector_body_entered(body):
 func _process(delta):
 	if(hp <= 0):
 		queue_free()
-	if(position.distance_to(target.position) > 60):
+	if(global_position.distance_to(target.global_position) > 60):
 		direction = global_position.direction_to(target.global_position).normalized()
 	else: 
 		direction = Vector2.ZERO

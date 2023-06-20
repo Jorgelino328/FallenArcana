@@ -31,4 +31,9 @@ func _on_final_arena_body_entered(body):
 
 func _on_final_arena_body_exited(body):
 	if $Ogre_Mage:
-		body.global_position = Vector2(823,321)
+		body.global_position = Vector2(1200,1059)
+
+
+func _on_outer_zone_body_entered(body):
+	if(body is CharacterBody2D):
+		body.global_position = Vector2(3008,144)
