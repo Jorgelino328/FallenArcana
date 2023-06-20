@@ -1,8 +1,10 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://c3u7pkv4gva6m"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://c3u7pkv4gva6m"]
 
 [ext_resource type="StyleBox" uid="uid://7aug7iamy163" path="res://Scenes/UIs/UI_Settings/disablesPurp.tres" id="1_62daq"]
 [ext_resource type="StyleBox" uid="uid://dy04pnb6g5byk" path="res://Scenes/UIs/UI_Settings/BackdropPurp2.tres" id="2_01e8e"]
 [ext_resource type="StyleBox" uid="uid://b55b8715d53rp" path="res://Scenes/UIs/UI_Settings/BackdropPurp.tres" id="3_cqq2e"]
+[ext_resource type="StyleBox" uid="uid://cch4cdhj5164c" path="res://Scenes/UIs/UI_Settings/checkbox.tres" id="4_1e61t"]
+[ext_resource type="StyleBox" uid="uid://dpnkfuqeqspba" path="res://Scenes/UIs/UI_Settings/checkbox_highlight.tres" id="4_hvmep"]
 [ext_resource type="FontFile" uid="uid://1smp3j53cv0l" path="res://Assets/Fonts/Typodermic Fonts/vinque rg.otf" id="4_pafa4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iaioy"]
@@ -41,6 +43,13 @@ Button/styles/focus = ExtResource("2_01e8e")
 Button/styles/hover = ExtResource("2_01e8e")
 Button/styles/normal = ExtResource("3_cqq2e")
 Button/styles/pressed = ExtResource("3_cqq2e")
+CheckBox/constants/h_separation = 20
+CheckBox/styles/focus = ExtResource("4_1e61t")
+CheckBox/styles/hover = ExtResource("4_hvmep")
+CheckBox/styles/hover_pressed = ExtResource("4_hvmep")
+CheckBox/styles/normal = ExtResource("4_1e61t")
+CheckBox/styles/pressed = ExtResource("4_1e61t")
+CheckButton/styles/normal = null
 HSlider/styles/slider = SubResource("StyleBoxFlat_iaioy")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0.0980392, 0, 0.266667, 1)

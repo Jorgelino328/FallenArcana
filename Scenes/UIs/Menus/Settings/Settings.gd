@@ -62,7 +62,6 @@ func _on_master_value_changed(value):
 	
 
 func volume(bus_index,value):
-	print(linear_to_db(value))
 	AudioServer.set_bus_volume_db(bus_index,linear_to_db(value))
 
 
