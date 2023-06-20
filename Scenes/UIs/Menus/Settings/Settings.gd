@@ -34,7 +34,12 @@ func _on_audio_pressed():
 
 
 func _on_back_from_options_pressed():
-	emit_signal("back_menu")
+	if(get_parent().name == "CanvasLayer"):
+		get_tree().get_current_scene().paused = false
+		get_tree().paused = false
+		queue_free()
+	else:
+		emit_signal("back_menu")
 
 
 func _on_full_screen_toggled(button_pressed):

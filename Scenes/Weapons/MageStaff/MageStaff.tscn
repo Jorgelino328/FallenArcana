@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Weapons/MageStaff/MageStaff.gd" id="1_s0je7"]
 [ext_resource type="Texture2D" uid="uid://tl6ufo75r4ti" path="res://Assets/Sprites/fire.png" id="2_cexdo"]
-[ext_resource type="AudioStream" uid="uid://bb654qx1u77xw" path="res://Assets/Audio/mike_koenig-shotgun/10 Guage Shotgun-SoundBible.com-74120584.wav" id="3_4aihh"]
+[ext_resource type="AudioStream" uid="uid://dr2dq8iifwpgq" path="res://Assets/Audio/rock-smash.mp3" id="3_gn6q1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs1xw"]
 size = Vector2(12.5, 14.25)
@@ -88,7 +88,7 @@ libraries = {
 autostart = true
 
 [node name="MageShot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_4aihh")
+stream = ExtResource("3_gn6q1")
 bus = &"Sound FX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

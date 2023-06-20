@@ -10,6 +10,8 @@ func _ready():
 
 func connect_signals():
 	if(current_level == $Game_Over || current_level == $EndGame):
+		$Audio/BackgroundMusic.stream = music1
+		$Audio/BackgroundMusic.play()
 		current_level.menu.connect(_on_menu)
 		current_level.quit.connect(_on_quit)
 	elif(current_level == $Main_Menu):

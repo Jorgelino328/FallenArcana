@@ -8,7 +8,7 @@ var pellet = preload("res://Scenes/Weapons/Spells/RockBlast.tscn")
 
 func _on_shooting(weapon,target):
 	animation.play("shoot")
-	#$MageShot.play()
+	$MageShot.play()
 	for i in range(pelletCount):
 		var pellet_instance = pellet.instantiate()
 		pellet_instance.global_position = $StaffEnd.global_position

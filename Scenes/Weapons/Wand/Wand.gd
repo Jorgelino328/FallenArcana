@@ -12,7 +12,7 @@ func _on_shooting(spell,target):
 	
 	if(spell_instance.name == "FireBolt" && can_shoot):
 		animation.play("shoot")
-		$WandShot.play()
+		$FireShot.play()
 		spell_instance.global_position = $WandEnd.global_position
 		if target.distance_to(player_pos) > 60:
 			var direction_of_mouse = spell_instance.global_position.direction_to(target).normalized()
@@ -22,7 +22,7 @@ func _on_shooting(spell,target):
 			spell_instance.rotation = global_rotation + deg_to_rad(90)
 	elif(spell_instance.name == "RockBlast" && can_shoot):
 		animation.play("shoot")
-		#$WandShot.play()
+		$RockShot.play()
 		for i in range(pelletCount):
 			spell_instance = spell.instantiate()
 			spell_instance.global_position = $WandEnd.global_position
