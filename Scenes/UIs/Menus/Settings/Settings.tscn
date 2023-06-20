@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6v3nqo1no8ti"]
 
-[ext_resource type="Theme" uid="uid://ca7biufqtx3kh" path="res://Scenes/UIs/UI_Settings/RedWest.tres" id="1_d6hsy"]
 [ext_resource type="Script" path="res://Scenes/UIs/Menus/Settings/Settings.gd" id="1_k4wg7"]
+[ext_resource type="Theme" uid="uid://c3u7pkv4gva6m" path="res://Scenes/UIs/UI_Settings/PurpleMana.tres" id="1_ty1e1"]
 
 [node name="Settings" type="Control"]
 process_mode = 3
@@ -13,11 +13,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_d6hsy")
+theme = ExtResource("1_ty1e1")
 script = ExtResource("1_k4wg7")
 metadata/_edit_vertical_guides_ = [407.0, 474.0, 745.0, 577.0]
 
 [node name="Options" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -70,13 +71,11 @@ text = "Back
 [node name="Video" type="Control" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
+anchors_preset = 0
 offset_left = -574.0
 offset_top = -326.0
 offset_right = 574.0
 offset_bottom = 324.0
-grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Video"]
 clip_contents = true
@@ -139,7 +138,6 @@ text = "Back
 "
 
 [node name="Audio" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 0
 offset_left = -575.0
@@ -167,7 +165,6 @@ metadata/_edit_lock_ = true
 [node name="Labels" type="VBoxContainer" parent="Audio/HBoxContainer"]
 layout_direction = 2
 layout_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="Master" type="Label" parent="Audio/HBoxContainer/Labels"]
 layout_mode = 2
