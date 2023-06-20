@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://s1ugftu76qga"]
+[gd_scene load_steps=5 format=3 uid="uid://s1ugftu76qga"]
 
 [ext_resource type="Theme" uid="uid://c3u7pkv4gva6m" path="res://Scenes/UIs/UI_Settings/PurpleMana.tres" id="1_dxysw"]
 [ext_resource type="Script" path="res://Scenes/UIs/Dialogue_UI/Dialogue_UI.gd" id="2_r3yui"]
-[ext_resource type="Texture2D" uid="uid://cclurvdfhr3m8" path="res://Assets/Sprites/Enemy1.png" id="3_ivnc2"]
 [ext_resource type="FontFile" uid="uid://dnd5cxvsy02wk" path="res://Assets/Fonts/Typodermic Fonts/shouldve known.otf" id="3_qv6mv"]
 [ext_resource type="AudioStream" uid="uid://bhlno0v7v505j" path="res://Assets/Audio/dialogue.wav" id="5_rb1fu"]
 
@@ -78,7 +77,6 @@ But i don't care"
 [node name="Portrait" type="Sprite2D" parent="VBoxContainer/Panel"]
 position = Vector2(95, 95)
 scale = Vector2(5, 5)
-texture = ExtResource("3_ivnc2")
 
 [node name="Timer" type="Timer" parent="."]
 

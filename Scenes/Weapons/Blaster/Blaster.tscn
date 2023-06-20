@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Weapons/Blaster/Blaster.gd" id="1_43xb4"]
 [ext_resource type="Texture2D" uid="uid://tl6ufo75r4ti" path="res://Assets/Sprites/fire.png" id="2_8u2gq"]
-[ext_resource type="AudioStream" uid="uid://dj160wno4clem" path="res://Assets/Audio/shots/pistol.wav" id="3_vkwr1"]
+[ext_resource type="AudioStream" uid="uid://ctngp26o53olk" path="res://Assets/Audio/short-fireball-woosh-6146.mp3" id="3_7bmfo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7oird"]
 size = Vector2(9.5, 17)
@@ -87,7 +87,7 @@ wait_time = 0.3
 autostart = true
 
 [node name="BlasterShot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_vkwr1")
+stream = ExtResource("3_7bmfo")
 bus = &"Sound FX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
