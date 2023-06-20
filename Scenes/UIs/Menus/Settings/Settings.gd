@@ -35,7 +35,7 @@ func _on_audio_pressed():
 
 func _on_back_from_options_pressed():
 	if(get_parent().name == "CanvasLayer"):
-		get_tree().get_current_scene().paused = false
+		get_parent().get_parent().paused = false
 		get_tree().paused = false
 		queue_free()
 	else:

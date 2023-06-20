@@ -1465,19 +1465,16 @@ player = NodePath("../Player")
 [node name="HealthKit" parent="." node_paths=PackedStringArray("player") instance=ExtResource("14_pyvls")]
 position = Vector2(2461, 3021)
 collision_layer = 4
-collision_mask = 16
 player = NodePath("../Player")
 
 [node name="HealthKit2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("14_pyvls")]
 position = Vector2(3887, 1161)
 collision_layer = 4
-collision_mask = 16
 player = NodePath("../Player")
 
 [node name="HealthKit3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("14_pyvls")]
 position = Vector2(1938, 544)
 collision_layer = 4
-collision_mask = 16
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_mfmky")]
@@ -1524,11 +1521,13 @@ metadata/_edit_lock_ = true
 position = Vector2(1200, 1059)
 target = NodePath("../Player")
 
-[node name="HealthKit4" parent="." instance=ExtResource("14_pyvls")]
+[node name="HealthKit4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("14_pyvls")]
 position = Vector2(1152, 1560)
+player = NodePath("../Player")
 
-[node name="HealthKit5" parent="." instance=ExtResource("14_pyvls")]
+[node name="HealthKit5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("14_pyvls")]
 position = Vector2(968, 1240)
+player = NodePath("../Player")
 
 [node name="OuterZone" type="Area2D" parent="."]
 collision_mask = 16

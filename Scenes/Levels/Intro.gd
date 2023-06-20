@@ -13,6 +13,7 @@ var intro3 = "res://Assets/Dialogue/Intro3.json"
 var dialogue_instance
 
 func _ready():
+	super._ready()
 	rand.randomize()
 	$CanvasLayer/PlayerHUD.visible = false
 	dialogue_instance = dialogueUI.instantiate()
@@ -37,6 +38,7 @@ func intro_3():
 	fireBolt.selected = true
 	
 func _process(delta):
+	super._process(delta)
 	if(!$CanvasLayer/Dialogue_UI):
 		get_tree().paused = false
 		if(!intro2_done):
