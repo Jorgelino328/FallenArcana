@@ -6,7 +6,8 @@ extends CharacterBody2D
 @export var hp : int
 @onready var mv_animation := $MovementAnimator
 @onready var ac_animation := $ActionAnimator
-
+var dead := false
+var dying := false
 
 var equipped_right = null
 var equipped_left = null
@@ -29,36 +30,39 @@ func get_input():
 		$Wand.rotation -= PI/2
 	input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = input_direction * current_speed
-	if(velocity.x > 1):
+	if(velocity.x > 1 && !dead && !dying):
 		mv_animation.play("walking_right")
 		last_dir = input_direction
 		$Wand.position = Vector2(5,18)
 		$Wand.show_behind_parent = false
-	elif(velocity.x < -1):
+	elif(velocity.x < -1 && !dead && !dying):
 		mv_animation.play("walking_left")
 		last_dir = input_direction
 		$Wand.position = Vector2(-5,18)
 		$Wand.show_behind_parent = false
-	elif(velocity.y > 1):
+	elif(velocity.y > 1 && !dead && !dying):
 		mv_animation.play("walking_down")
 		last_dir = input_direction
 		$Wand.position = Vector2(-5,18)
 		$Wand.show_behind_parent = false
-	elif(velocity.y < -1):
+	elif(velocity.y < -1 && !dead && !dying):
 		mv_animation.play("walking_up")
 		last_dir = input_direction
 		$Wand.position = Vector2(10,8)
 		$Wand.show_behind_parent = true
-	elif(last_dir.x == 1):
+	elif(last_dir.x == 1 && !dead && !dying):
 		mv_animation.play("idle_right")
-	elif(last_dir.x == -1):
+	elif(last_dir.x == -1 && !dead && !dying):
 		mv_animation.play("idle_left")
-	elif(last_dir.y == -1):
+	elif(last_dir.y == -1 && !dead && !dying):
 		mv_animation.play("idle_up")
-	else:
+	elif(!dead && !dying):
 		mv_animation.play("idle_down")
 		
 func _process(delta):
+	if hp <= 0 && !dying :
+		$MovementAnimator.play("death")
+		dying = true
 	if Input.is_action_just_pressed("l_mouse"):
 		emit_signal("shooting",selectedSpell,get_global_mouse_position())
 	if Input.is_action_just_pressed("1"):
@@ -99,7 +103,13 @@ func _on_bullet_detector_body_entered(body):
 			2:
 				hp -= 0.1
 
+
 func _on_dash_cooldown_timeout():
 	can_dash = true
 	$DashCooldown.stop()
 
+
+
+func _on_movement_animator_animation_finished(anim_name):
+	if(anim_name == "death"):
+		dead = true

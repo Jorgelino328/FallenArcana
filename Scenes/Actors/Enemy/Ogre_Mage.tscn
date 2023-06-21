@@ -184,7 +184,7 @@ position = Vector2(43, -8)
 collision_layer = 16
 collision_mask = 116
 script = ExtResource("1_p4442")
-hp = 30
+hp = 60
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(18.5, 20.5)

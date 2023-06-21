@@ -75,8 +75,8 @@ text = "The Quick Brown Fox Jumps Over the Lazy Dog
 But i don't care"
 
 [node name="Portrait" type="Sprite2D" parent="VBoxContainer/Panel"]
-position = Vector2(95, 95)
-scale = Vector2(5, 5)
+position = Vector2(110, 117)
+scale = Vector2(1.1875, 1.275)
 
 [node name="Timer" type="Timer" parent="."]
 

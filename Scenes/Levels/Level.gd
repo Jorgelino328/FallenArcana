@@ -29,5 +29,5 @@ func _process(delta):
 			paused = false
 			$CanvasLayer/Settings.queue_free()
 		
-	if($Player.hp <= 0):
+	if($Player.hp <= 0 && $Player.dead):
 		emit_signal("next_level",game_over)

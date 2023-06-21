@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$HealthBar.max_value = 50
+	$HealthBar.max_value = 20
 	$HealthBar.value = player.hp
 	
 	$DashLabel/DashAmount.text = " %.1f" %player.get_node("DashCooldown").time_left

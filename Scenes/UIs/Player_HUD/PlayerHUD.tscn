@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cwqq2a8p5khar" path="res://Assets/Sprites/health_empty.png" id="2_pv6ku"]
 [ext_resource type="StyleBox" uid="uid://cqhyfjss17yxj" path="res://Scenes/UIs/Player_HUD/Inventory.tres" id="5_gnlao"]
 [ext_resource type="Script" path="res://Scenes/UIs/Player_HUD/Slot.gd" id="7_0lqq7"]
-[ext_resource type="StyleBox" path="res://Scenes/UIs/UI_Settings/InvBox.tres" id="7_ai6r5"]
+[ext_resource type="StyleBox" uid="uid://cyfmrx7spwfcv" path="res://Scenes/UIs/UI_Settings/InvBox.tres" id="7_ai6r5"]
 [ext_resource type="Texture2D" uid="uid://us5e1mr8xy45" path="res://Assets/Sprites/sprites/Foozle_2DE0001_Pixel_Magic_Effects/Pixel_Magic_Effects_Icons.png" id="7_g4k14"]
 [ext_resource type="Texture2D" uid="uid://dywya2aeb5v4j" path="res://Assets/Sprites/select.png" id="8_x1xhl"]
 
