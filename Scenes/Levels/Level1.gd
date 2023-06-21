@@ -2,6 +2,7 @@ extends Level
 
 var level = load("res://Scenes/UIs/End/EndGame.tscn")
 var dialogue = "res://Assets/Dialogue/Level1.json"
+var dialogueBoss = "res://Assets/Dialogue/Boss1.json"
 var final_song := false 
 @onready var fireBolt = $CanvasLayer/PlayerHUD/Inventory/GridContainer/Fire 
 @onready var new_song = load("res://Assets/Audio/Dragon-Castle.mp3") 
@@ -14,6 +15,10 @@ func _ready():
 
 func _process(delta):
 	super._process(delta)
+	if(!$CanvasLayer/Dialogue_UI):
+		get_tree().paused = false
+	else:
+		get_tree().paused = true
 	if !$Ogre_Mage:
 		emit_signal("next_level",level)
 	
@@ -25,6 +30,9 @@ func _on_pit_body_entered(body):
 
 func _on_final_arena_body_entered(body):
 	if(body.name == "Player" && !final_song):
+		var dialogue_instance = dialogueUI.instantiate()
+		dialogue_instance.dialoguePath = dialogueBoss
+		$CanvasLayer.add_child(dialogue_instance)
 		emit_signal("change_song",new_song)
 		final_song = true
 
