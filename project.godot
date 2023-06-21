@@ -13,7 +13,7 @@ config_version=5
 config/name="LostArcana"
 run/main_scene="res://Scenes/SceneController.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Sprites/sprites/Foozle_2DE0001_Pixel_Magic_Effects/Portal/001.png"
 
 [display]
 
